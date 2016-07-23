@@ -1,0 +1,109 @@
+{% extends 'task/base.html' %}
+
+{% block title %}
+    {{ task.short_command }}
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class=" col-md-5">
+        <ul class="list-inline small_menu">
+            {% if task.done %}
+                <li>
+                    <a href="{% url 'task:task_invert' pk=task.id %}"><h1><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></h1>Mark as not done </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'task:task_invert' pk=task.id %}"><h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></h1></span> Mark as done </a>
+                </li>
+                <li>
+                    <a href="{% url 'task:task_procrastinate' pk=task.id %}"><h1><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></h1>Procrastinate</a>
+                </li>
+            {% endif%}
+                <li>
+                    <a href="{% url 'task:edit' pk=task.id %}"><h1><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></h1>Edit task </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'task:calendar' task.date.year task.date.month task.date.day %}"><h1><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></h1>Calendar </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'task:task_remove' pk=task.id %}"><h1><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></h1>Delete </a>
+                </li>
+        </ul>
+
+        <h2>{{ task.short_command }}
+            {% if task.importance == '1' %}
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+            {% elif task.importance == '2' %}
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+            {% else %}
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+            {% endif %}
+        </h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        {% if task.done %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        {% endif %}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        {{task.date|date:"j M Y"}}
+                    </td>
+                </tr>
+                {% if task.time %}
+                    <tr>
+                        <td>
+                            Time
+                        </td>
+                        <td>
+                            {{task.time}}
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        {{task.description}}
+                    </td>
+                </tr>
+                {% if task.deadline %}
+                    <tr>
+                        <td>
+                            Deadline
+                        </td>
+                        <td>
+                            {{task.deadline|date:"j M Y"}}
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class=" col-md-7">
+    </div>
+</div>
+{% endblock%}

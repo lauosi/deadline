@@ -1,0 +1,79 @@
+.mon, .tue, .wed, .thu, .fri, .sat, .sun {
+    height: 60px;
+    width: 60px;
+    background-color: #e2ebea;
+    text-align: center;
+    border-style: solid;
+    border-width: 4px;
+    border-color: white;
+
+}
+
+.calendar a {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding: 1.5em;
+    margin: -1.5em;
+}
+
+a {
+    color: #333333;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+.calendar a:hover {
+    color: green;
+    background-color: blue;
+}
+
+
+a:active {
+    color: red;
+}
+
+.filled{
+    background-color: #f0e6bd;
+    color: white;
+}
+
+.deadline{
+
+}
+
+.today{
+    background-color: #d8b785;
+}
+
+.month{
+    text-align: center;
+}
+
+.calendar_page{
+    margin-top: 22px;
+    background-color: #e2ebea;
+}
+
+.main_day_name{
+    text-align: center;
+}
+
+.calendar{
+    text-align: center;
+}
+
+.left_panel{
+    text-align: center;
+}
+
+.right_panel{
+    text-align: center;
+}
+
+.small_menu{
+    text-align: center;
+}

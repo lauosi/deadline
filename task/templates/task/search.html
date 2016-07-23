@@ -1,0 +1,41 @@
+{% extends 'task/base.html' %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <form action="" method='get'>
+                <input type="text" name="q" placeholder="Search tasks" class="form-control" value="{{request.GET.q}}" /><br>
+                <input type="checkbox" name="f" value="display_upcoming"/> Only upcoming tasks
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% if errors %}
+            {% for error in errors %}
+                <p>{{error}}</p>
+            {% endfor %}
+        {% elif tasks %}
+            <p>Found {{ tasks|length }} task{{ tasks|pluralize}}.</p>
+            <ul class="list-inline">
+                {% for task in tasks %}
+                    <div class="col-md-4 ">
+                        <li>
+                            <h3 class="text-uppercase"><a href="{% url 'task:detail' pk=task.id%}">{{task.short_command}}</a></h3>
+                            <p>To do: {{task.date|date:"j M Y"}}</p>
+                        </li>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {% if query %}
+                <p>No task matched your search criteria.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock%}

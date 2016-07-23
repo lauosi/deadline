@@ -1,0 +1,38 @@
+{% extends 'task/base.html' %}
+
+{% block title %}
+Tasks
+{% endblock %}
+
+{% block body %}
+    <div class="row text-center">
+        <h3 class="index-header"> Check out upcoming tasks </h3>
+        <a href="{% url 'task:calendar' %}" class="btn btn-primary btn-lg">Today</a>
+        <a href="{% url 'task:index' %}" class="btn btn-primary btn-lg">This week</a>
+        <a href="{% url 'task:index' %}" class="btn btn-primary btn-lg">This month </a><br><br>
+    </div>
+    <div class="container">
+    <div class="row">
+        {% if tasks %}
+          <p>Found {{ tasks|length }} task{{ tasks|pluralize}}.</p>
+            <ul class="list-inline">
+              {% for task in tasks %}
+                <div class="col-md-4 ">
+                  <li>
+                    <!-- <img src="http://placehold.it/100x100"> -->
+                    <h3 class="text-uppercase"><a href="{% url 'task:detail' pk=task.id%}">{{task.short_command}}</a></h3>
+                    <p>
+                    To do: {{task.date}}
+                    </p>
+                  </li>
+                </div>
+              {% endfor %}
+            </ul>
+        {% else %}
+          {% if query %}
+            <p>No task matched your search criteria.</p>
+          {% endif %}
+        {% endif %}
+    </div>
+  </div>
+{% endblock%}

@@ -1,0 +1,148 @@
+{% extends 'task/base.html' %}
+
+{% block title %}
+    Archive
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            {% if past %}
+                <h3> Your passed tasks</h3>
+            {% else %}
+                <h3> Your upcoming tasks</h3>
+            {% endif %}
+
+            {% if tasks %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Date</th>
+                            <th>Importance</th>
+                            <th>Completion</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks%}
+                        <tr>
+                            <td>
+                                <a href="{% url 'task:detail' task.id%}">{{task.short_command}}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'task:calendar' task.date.year task.date.month task.date.day%}">{{task.date|date:"j M Y"}}</a>
+                            </td>
+                            {% if task.importance == '1' %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% elif task.importance == '2' %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% else %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% endif %}
+                            {% if task.done %}
+                                <td>
+                                    <a href="{% url 'task:task_invert' pk=task.id %}">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            {% else %}
+                                <td>
+                                    <a href="{% url 'task:task_invert' pk=task.id %}">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            {% endif %}
+                                <td>
+                                    <a href="{% url 'task:task_remove' pk=task.id %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            {% if past %}
+                <h3> Your passed deadlines</h3>
+            {% else %}
+                <h3> Your upcoming deadlines</h3>
+            {% endif %}
+
+            {% if deadlines %}
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Deadline</th>
+                            <th>Importance</th>
+                            <th>Completion</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in deadlines%}
+                        <tr>
+                            <td>
+                                <a href="{% url 'task:detail' task.id%}">{{task.short_command}}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'task:calendar' task.date.year task.date.month task.date.day%}">{{task.deadline|date:"j M Y"}}</a>
+                            </td>
+                            {% if task.importance == '1' %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% elif task.importance == '2' %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% else %}
+                                <td>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                                </td>
+                            {% endif %}
+                            {% if task.done %}
+                                <td>
+                                    <a href="{% url 'task:task_invert' pk=task.id %}">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            {% else %}
+                                <td>
+                                    <a href="{% url 'task:task_invert' pk=task.id %}">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            {% endif %}
+                                <td>
+                                    <a href="{% url 'task:task_remove' pk=task.id %}">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif%}
+        </div>
+
+    </div>
+</div>
+{% endblock%}
