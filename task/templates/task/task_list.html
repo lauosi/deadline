@@ -8,15 +8,16 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-6 table-responsive">
             {% if past %}
                 <h3> Your passed tasks</h3>
             {% else %}
                 <h3> Your upcoming tasks</h3>
             {% endif %}
+            <hr>
 
             {% if tasks %}
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Task</th>
@@ -75,15 +76,15 @@
             {% endif %}
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 table-responsive">
             {% if past %}
                 <h3> Your passed deadlines</h3>
             {% else %}
                 <h3> Your upcoming deadlines</h3>
             {% endif %}
-
+            <hr>
             {% if deadlines %}
-            <table class="table">
+            <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Task</th>
@@ -144,5 +145,6 @@
         </div>
 
     </div>
+    <hr>
 </div>
 {% endblock%}

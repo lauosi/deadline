@@ -1,4 +1,5 @@
 {% extends 'task/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     Calendar
@@ -6,6 +7,10 @@
 
 {% block body %}
 <div class="container">
+    <div class="row">
+        <center><img src="{% static 'task/images/logo.png' %}" alt='logo' class="logo" /></center>
+    </div>
+    <hr>
     <div class="row">
 
         <div class="col-md-1 left_panel">
@@ -57,12 +62,12 @@
                     {% endif %}
                 </h1>
             </div>
-            <div>
+            <div class="table-responsive">
                 {% if deadlines %}
                     <h4>
                         <strong>{{ deadlines|length }}</strong> deadline{{ deadlines|pluralize}}
                     </h4>
-                    <table class="table">
+                    <table class="table table-hover different-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -115,7 +120,7 @@
                 <h4>
                     <strong>{{ my_tasks|length }}</strong> task{{my_tasks|pluralize}}
                 </h4>
-                <table class="table">
+                <table class="table table-hover different-table">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -168,5 +173,6 @@
         </div>
 
     </div>
+    <hr>
 </div>
 {% endblock%}

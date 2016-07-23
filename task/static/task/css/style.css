@@ -1,7 +1,7 @@
 .mon, .tue, .wed, .thu, .fri, .sat, .sun {
     height: 60px;
     width: 60px;
-    background-color: #e2ebea;
+    background-color: #e1dee5;
     text-align: center;
     border-style: solid;
     border-width: 4px;
@@ -17,36 +17,45 @@
     margin: -1.5em;
 }
 
+.home{
+    max-width: 150px;
+    padding-top: 3px;
+    vertical-align: text-top;
+}
+
 a {
     color: #333333;
 }
 
 a:hover {
-    color: blue;
+    color: #b9e4c5;
     text-decoration: none;
 }
 
 .calendar a:hover {
-    color: green;
-    background-color: blue;
+    color: #333333;
+    background-color: #2aaa6c;
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #2aaa6c;
+}
 
 a:active {
     color: red;
 }
 
 .filled{
-    background-color: #f0e6bd;
+    background-color: #b9e4c5;
     color: white;
 }
 
-.deadline{
-
+.logo{
+    vertical-align: text-top;
 }
 
 .today{
-    background-color: #d8b785;
+    background-color: #79c27f;
 }
 
 .month{
@@ -55,12 +64,13 @@ a:active {
 
 .calendar_page{
     margin-top: 22px;
-    background-color: #e2ebea;
+    background-color: #e1dee5;
 }
 
 .main_day_name{
     text-align: center;
 }
+
 
 .calendar{
     text-align: center;
@@ -76,4 +86,9 @@ a:active {
 
 .small_menu{
     text-align: center;
+}
+
+
+.different-table, .different-table td{
+   border-top: 1px solid #707070;
 }
