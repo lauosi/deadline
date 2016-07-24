@@ -9,7 +9,7 @@
 
 }
 
-.calendar a {
+.month a {
     display: inline-block;
     position: relative;
     z-index: 1;
@@ -32,7 +32,24 @@ a:hover {
     text-decoration: none;
 }
 
-.calendar a:hover {
+.left_panel a:hover {
+    color: #2aaa6c;
+}
+
+.right_panel a:hover{
+    color: #2aaa6c;
+}
+
+.bottom_panel a:hover{
+    color: #2aaa6c;
+}
+
+.small_menu a:hover{
+    color: #2aaa6c;
+    float:left;
+}
+
+.month a:hover {
     color: #333333;
     background-color: #2aaa6c;
 }
