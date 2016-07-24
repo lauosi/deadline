@@ -19,7 +19,7 @@ class Task(models.Model):
     importance = models.CharField(
         max_length=1,
         choices=TASK_IMPORTANCE,
-        default='1',)
+        default='2',)
     description = models.TextField(
         verbose_name="Description",
         blank=True, null=True)
